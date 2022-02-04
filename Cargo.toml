@@ -1,0 +1,12 @@
+[package]
+name = "my-http-server-app-insights"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+my-http-server = { branch = "0.2.1", git = "https://github.com/MyJetTools/my-http-server.git" }
+rust-extensions = { branch = "main", git = "https://github.com/MyJetTools/rust-extensions.git" }
+my-app-insights = { branch = "main", git = "https://github.com/MyJetTools/my-app-insights.git" }
+async-trait = "*"
