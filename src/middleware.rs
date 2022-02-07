@@ -32,12 +32,14 @@ impl HttpServerMiddleware for AppInsightsMiddleware {
 
         match &result {
             Ok(ok_result) => {
-                self.telemetry.write_http_request_duration(
-                    ctx.request.uri.clone(),
-                    ctx.request.method.clone(),
-                    ok_result.get_status_code(),
-                    sw.duration(),
-                );
+                if ok_result.write_telemetry {
+                    self.telemetry.write_http_request_duration(
+                        ctx.request.uri.clone(),
+                        ctx.request.method.clone(),
+                        ok_result.get_status_code(),
+                        sw.duration(),
+                    );
+                }
             }
             Err(fail_result) => {
                 if fail_result.write_telemetry {
